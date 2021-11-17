@@ -9,7 +9,6 @@ import { templateData } from './data/templates.js';
 
 // Create Express App Connection
 const app = express();
-dotenv.config();
 
 // Set up BodyParser
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
@@ -21,12 +20,12 @@ app.use('/templates', templateRoutes);
 
 // https://wwww.mongodb.com/cloud/atlas
 // Using Mongo on Server Side to host DB
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
-CONNECTION_URL = 'mongodb+srv://budowja:budowja123@cluster0.2drrt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const CONNECTION_URL = 'mongodb+srv://budowja:budowja123@cluster0.2drrt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 // Create connection to MongoDB on port 5000
-mongoose.connect(process.env.CONNECTION_URL, {})
+mongoose.connect(CONNECTION_URL, {})
     .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
     .catch((error) => console.log(error.message));
 
